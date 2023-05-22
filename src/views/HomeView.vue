@@ -1,18 +1,46 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>NOMBRE</th>
+              <th>DESCRIPCION</th>
+              <th>ACCIONES</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider" id="contenido">
+
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
-export default {
-  name: 'HomeView',
-  components: {
-    HelloWorld
+  import axios from 'axios'
+  export default{
+    data(){
+      return{
+        escuela: null
+      }
+    },
+    mounted(){
+      this.getEscuela()
+    },
+    methods:{
+      getEscuela(){
+        axios.get('http:url')
+        .then(res => {
+          this.escuela = res.data
+        })
+        .catch(err => {
+          console.log(err)
+        })
+      }
+    }
   }
-}
 </script>
